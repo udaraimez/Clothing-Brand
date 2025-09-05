@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ryzout - Modern T-Shirt Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        // Immediately invoked function to set theme and prevent FOUC
+        (function() {
+            try {
+                const theme = localStorage.getItem('ryzout-theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            } catch (_) {}
+        })();
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Cormorant Garamond', 'serif'],
+                    },
+                    letterSpacing: {
+                        'display': '0.05em', // Adjusted for serif font
+                    },
+                    colors: {
+                        'brand-primary': '#B91C1C', // Royal Red
+                        'brand-secondary': '#DC2626', // Lighter Royal Red
+                        
+                        // Dark Theme (Royal)
+                        'dark-bg': '#121212',
+                        'dark-card': '#1D1D1D',
+                        'dark-border': '#3A3A3A',
+                        
+                        // Light Theme
+                        'light-bg': '#F8F6F1',
+                        'light-card': '#FFFFFF',
+                        'light-border': '#E5E7EB',
+                        'dark-text': '#111827', // Text on light backgrounds
+                        
+                        // Text Colors
+                        'light-gray': '#EAEAEA', // Primary text on dark backgrounds
+                        'medium-gray': '#9E9E9E', // Secondary text on dark backgrounds
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-out': 'fadeInOut 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInOut: {
+                            '0%, 100%': { opacity: '0' },
+                            '10%, 90%': { opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
